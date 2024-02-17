@@ -75,6 +75,12 @@ if __name__ == "__main__":
         
         # Data directory for storing datasets
         "data/.gitkeep",
+
+        # DVC Configuration: Defines stages in the project's data processing and ML workflow.
+        "dvc.yaml",
+        
+        # Parameters: YAML file.
+        "parameters.yaml",
         
         # Jupyter notebooks for trials and research
         "notebooks/trials.ipynb",
