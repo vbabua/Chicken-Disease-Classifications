@@ -5,3 +5,8 @@ data_download:
   dataset_url : https://github.com/vbabua/Chicken-Disease-Classifications/raw/main/Chicken-fecal-images.zip
   dataset_archive_path : artifacts/data_download/data.zip
   extraction_directory: artifacts/data_download
+
+base_model:
+  model_directory: artifacts/base_model
+  initial_model_path: artifacts/base_model/initial_model.h5
+  modified_model_path: artifacts/base_model/modified_model.h5
