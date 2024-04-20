@@ -10,3 +10,8 @@ base_model:
   model_directory: artifacts/base_model
   initial_model_path: artifacts/base_model/initial_model.h5
   modified_model_path: artifacts/base_model/modified_model.h5
+
+prepare_callbacks:
+  callbacks_directory: artifacts/prepare_callbacks
+  tensorboard_logs_directory: artifacts/prepare_callbacks/tensorboard_log_dir
+  model_checkpoint_path: artifacts/prepare_callbacks/checkpoint_dir/model.h5

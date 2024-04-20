@@ -43,3 +43,14 @@ class BaseModelConfig:
 
     # Number of output classes for the model.
     output_classes: int
+
+@dataclass(frozen=True)
+class CallbackConfig:
+    # Base directory for storing all callback-related files, such as logs and model checkpoints.
+    callbacks_directory: Path
+
+    # Directory where TensorBoard log files will be stored. These logs are used for visualizing the training process.
+    tensorboard_logs_directory: Path
+
+    # File path for saving the model's checkpoint. This includes the file name where the best model will be saved based on validation accuracy or loss.
+    model_checkpoint_path: Path
