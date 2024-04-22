@@ -3,7 +3,8 @@ import os
 from ChickenDiseaseClassifier.utils.common import read_yaml_file, create_directory_paths
 from ChickenDiseaseClassifier.entities.setting_entity import (IngestionSettings,
                                                             BaseModelConfig, 
-                                                            CallbackConfig)
+                                                            CallbackConfig,
+                                                            TrainingConfig)
 
 # Class to load and manage configuration settings from YAML files.
 class ConfigLoader:
@@ -68,4 +69,27 @@ class ConfigLoader:
             callbacks_directory=Path(callback_config.callbacks_directory),
             tensorboard_logs_directory=Path(callback_config.tensorboard_logs_directory),
             model_checkpoint_path=Path(callback_config.model_checkpoint_path)
+        )
+    
+    def get_training_config(self) -> TrainingConfig:
+        """
+        Retrieve and construct a TrainingConfig instance from the configuration file, ensuring
+        that the directory for training data exists. This method prepares the configuration necessary
+        for setting up model training including paths, epochs, batch size, and data augmentation details.
+        """
+        training = self.settings.training
+        base_model = self.settings.base_model
+        params = self.params
+        training_data_dir = Path(self.settings.data_download.extraction_directory) / "Chicken-fecal-images"
+        create_directory_paths([Path(training.training_root_dir)])
+
+        return TrainingConfig(
+            training_root_dir=Path(training.training_root_dir),
+            trained_model_path=Path(training.trained_model_path),
+            updated_model_path=Path(base_model.modified_model_path),
+            training_data_dir=training_data_dir,
+            num_epochs=params.EPOCHS,
+            batch_size=params.BATCH_SIZE,
+            use_data_augmentation=params.AUGMENTATION,
+            image_size=params.IMAGE_SIZE
         )

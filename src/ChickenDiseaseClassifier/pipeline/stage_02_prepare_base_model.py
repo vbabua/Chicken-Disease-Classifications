@@ -1,4 +1,4 @@
-from ChickenDiseaseClassifier.config.settings import ConfigManager
+from ChickenDiseaseClassifier.config.settings import ConfigLoader
 from ChickenDiseaseClassifier.components.prepare_base_model import BaseModelPreparation
 from ChickenDiseaseClassifier import logger
 
@@ -22,7 +22,7 @@ class PrepareBaseModelTrainingPipeline:
         Main method to execute the base model preparation process.
         """
         # Load configuration settings for the base model preparation stage.
-        config_manager = ConfigManager()
+        config_manager = ConfigLoader()
         base_model_config = config_manager.fetch_base_model_config()
 
         # Initialize the base model preparation process with the fetched configuration.
